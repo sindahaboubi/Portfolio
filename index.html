@@ -2003,6 +2003,70 @@
     </div>
 </div>
 
+<!-- Modal pour les détails du projet TickTask -->
+<div class="modal-overlay" id="ticktask-modal">
+    <div class="modal-container">
+        <button class="modal-close" id="ticktask-modal-close">×</button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title-container">
+                    <h2 class="modal-title">TickTask <span class="project-date-modal">Avril 2025</span></h2>
+                    <div class="project-header">
+                        <div class="project-location-modal">TEK-UP</div>
+                    </div>
+                </div>
+            </div>
+            <p class="modal-description">
+                Application web de gestion des tickets, réalisée dans le cadre de notre projet Angular à TEK-UP University of Digital Sciences.
+                <br><br>
+                <strong>Fonctionnalités principales :</strong><br>
+                ✅ <strong>3 rôles principaux :</strong><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;👤 <strong>Administrateur :</strong> Gère les utilisateurs et attribue les tickets aux agents de support.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;🧑‍💼 <strong>Employé :</strong> Crée ses propres tickets (titre, description, priorité, catégorie), suit leur évolution et reçoit des notifications et e-mails à chaque mise à jour.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;🧰 <strong>Agent de support :</strong> Gère les tickets qui lui sont affectés à travers un tableau Kanban (drag and drop) avec trois états : À faire, En cours, Terminé.<br>
+                ✅ Système de notifications et e-mails automatiques permettant à chaque utilisateur de rester informé en temps réel.<br>
+                ✅ Dashboard personnalisé pour chaque rôle avec des graphiques pour une vision claire de l'activité.
+            </p>
+            <div class="modal-technologies">
+                <h3>Technologies utilisées</h3>
+                <div class="modal-tech-logos">
+                    <div class="modal-tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" 
+                            alt="Angular 19" 
+                            title="Angular 19">
+                    </div>
+                    <div class="modal-tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" 
+                            alt="Node.js" 
+                            title="Node.js">
+                    </div>
+                    <div class="modal-tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" 
+                            alt="MongoDB" 
+                            title="MongoDB">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-screenshots">
+                <div class="screenshots-column-1">
+                    <img src="/images/Captures/TickTask/1.jpg" alt="Capture TickTask 1" class="modal-screenshot">
+                    <img src="/images/Captures/TickTask/2.jpg" alt="Capture TickTask 2" class="modal-screenshot">
+                </div>
+                <div class="screenshots-column-2">
+                    <img src="/images/Captures/TickTask/3.jpg" alt="Capture TickTask 3" class="modal-screenshot">
+                    <img src="/images/Captures/TickTask/4.jpg" alt="Capture TickTask 4" class="modal-screenshot">
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-secondary">Fermer</button>
+                <a href="https://github.com/votre-username/ticktask" class="modal-btn-github" target="_blank">
+                    Voir sur GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 <script>
 // Fonctionnalité pour le modal du projet
@@ -2261,6 +2325,63 @@ memomeModal.addEventListener('click', function(e) {
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && memomeModal.classList.contains('active')) {
         closeMemomeModalFunction();
+    }
+});
+
+
+// Fonctionnalité pour le modal TickTask
+const ticktaskModal = document.getElementById('ticktask-modal');
+const closeTicktaskModal = document.getElementById('ticktask-modal-close');
+const ticktaskButton = document.querySelector('.project-card:nth-child(4) .project-button'); // 4ème projet = TickTask
+const ticktaskModalSecondaryBtn = ticktaskModal.querySelector('.modal-btn-secondary');
+
+// Ajouter un ID au bouton TickTask pour le cibler plus facilement
+if (ticktaskButton) {
+    ticktaskButton.id = 'ticktask-btn';
+    
+    // Ouvrir le modal TickTask
+    ticktaskButton.addEventListener('click', function() {
+        ticktaskModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Activer les animations des éléments du modal
+        setTimeout(() => {
+            ticktaskModal.querySelector('.modal-content').classList.add('animated');
+        }, 100);
+    });
+}
+
+// Fermer le modal TickTask
+function closeTicktaskModalFunction() {
+    ticktaskModal.querySelector('.modal-content').classList.remove('animated');
+    ticktaskModal.querySelector('.modal-container').classList.add('closing');
+    
+    setTimeout(() => {
+        ticktaskModal.classList.remove('active');
+        ticktaskModal.querySelector('.modal-container').classList.remove('closing');
+        document.body.style.overflow = '';
+    }, 400);
+}
+
+if (closeTicktaskModal) {
+    closeTicktaskModal.addEventListener('click', closeTicktaskModalFunction);
+}
+
+if (ticktaskModalSecondaryBtn) {
+    ticktaskModalSecondaryBtn.addEventListener('click', closeTicktaskModalFunction);
+}
+
+// Fermer le modal en cliquant à l'extérieur
+ticktaskModal.addEventListener('click', function(e) {
+    if (e.target === ticktaskModal) {
+        closeTicktaskModalFunction();
+    }
+});
+
+// Fermer avec la touche Échap
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && ticktaskModal.classList.contains('active')) {
+        closeTicktaskModalFunction();
     }
 });
 </script>
