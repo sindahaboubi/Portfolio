@@ -411,9 +411,9 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 40px;
-            max-width: 1400px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -425,6 +425,8 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             border: 1px solid rgba(74, 222, 128, 0.1);
+            max-width: 350px;
+            width: 100%;
         }
 
         .project-card:hover {
@@ -542,21 +544,45 @@
             color: black;
             padding: 6px 14px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 15px;
             font-weight: 600;
             letter-spacing: 0.5px;
         }
 
+        .project-date-modal {
+            color: black;
+            font-size: 22px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #c9c9c9, #c9c9c9);
+            padding: 8px 14px;
+            font-weight: normal;
+        }
+
         .project-location {
             color: #64748b;
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 500;
             display: flex;
             align-items: center;
             gap: 5px;
         }
 
-        .project-location::before {
+        .project-location-modal{
+            color: #64748b;
+            font-size: 25px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+        }
+
+        .project-location::before{
+            content: "📍";
+            font-size: 12px;
+        }
+
+        .project-location-modal::before{
             content: "📍";
             font-size: 12px;
         }
@@ -591,7 +617,7 @@
             background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
             color: white;
             border: none;
-            padding: 12px 24px;
+            padding: 8px 20px;
             border-radius: 12px;
             font-size: 14px;
             font-weight: 600;
@@ -623,13 +649,13 @@
         .tech-logos {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
         }
 
         .tech-logo {
-            width: 32px;
-            height: 32px;
+            width: 22px;
+            height: 22px;
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -688,8 +714,8 @@
             }
 
             .projects-grid {
-                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-                gap: 30px;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 25px;
             }
         }
 
@@ -738,6 +764,7 @@
 
             .project-card {
                 margin: 0 10px;
+                max-width: 100%;
             }
 
             .project-content {
@@ -754,6 +781,416 @@
                 align-self: flex-end;
             }
         }
+        /* Styles pour le modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-container {
+    background-color: #fff;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 1100px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: translateY(50px);
+    transition: transform 0.4s ease;
+}
+
+.modal-overlay.active .modal-container {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #64748b;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    color: #1a1a2e;
+}
+
+.modal-content {
+    padding: 40px;
+}
+
+.modal-header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.modal-title {
+    font-size: 28px;
+    color: #1a1a2e;
+    margin-bottom: 10px;
+}
+
+.modal-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.modal-subtitle {
+    color: #64748b;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.modal-subtitle span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.modal-description {
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.modal-screenshots {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.screenshots-column-1,
+.screenshots-column-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.modal-screenshot {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 11px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.39);
+}
+
+
+.modal-technologies {
+    margin-bottom: 30px;
+}
+
+.modal-technologies h3 {
+    font-size: 18px;
+    color: #1a1a2e;
+    margin-bottom: 15px;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tech-tag {
+    background-color: #f1f5f9;
+    color: #475569;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.modal-btn {
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-btn-primary {
+    background-color: #4ade80;
+    color: #1a1a2e;
+    border: none;
+}
+
+.modal-btn-primary:hover {
+    background-color: #22c55e;
+}
+
+.modal-btn-secondary {
+    background-color: transparent;
+    color: #64748b;
+    border: 1px solid #cbd5e1;
+}
+
+.modal-btn-secondary:hover {
+    background-color: #f8fafc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .modal-container {
+        width: 95%;
+        max-height: 95vh;
+    }
+    
+    .modal-content {
+        padding: 25px;
+    }
+    
+    .modal-screenshots {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .screenshots-column-1,
+    .screenshots-column-2 {
+        display: contents;
+    }
+
+    .modal-title {
+        font-size: 24px;
+    }
+    }
+    /* Nouveau style pour les logos technos dans le modal */
+.modal-tech-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.modal-tech-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    padding: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.modal-tech-logo:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.modal-tech-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Style pour le lien GitHub */
+.modal-btn-github {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.modal-btn-github:hover {
+    background-color: #000;
+    transform: translateY(-2px);
+}
+
+.modal-btn-github::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z'/%3E%3C/svg%3E");
+    background-size: contain;
+}
+
+/* Ajoutez ces styles à votre section CSS existante */
+
+/* Animation d'entrée/sortie du modal */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes modalFadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+}
+
+.modal-container {
+    animation: modalFadeIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.modal-container.closing {
+    animation: modalFadeOut 0.4s ease-in forwards;
+}
+
+/* Animation pour les éléments du modal */
+.modal-content > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.modal-content.animated .modal-header {
+    animation: fadeInUp 0.6s ease 0.2s forwards;
+}
+
+.modal-content.animated .modal-description {
+    animation: fadeInUp 0.6s ease 0.4s forwards;
+}
+
+.modal-content.animated .modal-technologies {
+    animation: fadeInUp 0.6s ease 0.6s forwards;
+}
+
+.modal-content.animated .modal-screenshots {
+    animation: fadeInUp 0.6s ease 0.8s forwards;
+}
+
+.modal-content.animated .modal-actions {
+    animation: fadeInUp 0.6s ease 1s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation pour les screenshots */
+.modal-screenshot {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: zoom-in;
+}
+
+.modal-screenshot:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+/* Animation pour les tags technologies */
+.tech-tag {
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.tech-tag:hover {
+    background-color: #4ade80;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Lightbox pour les screenshots agrandis */
+.screenshot-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.screenshot-lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-image {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.screenshot-lightbox.active .lightbox-image {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.5);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
     </style>
 </head>
 <body>
@@ -874,7 +1311,7 @@
                         Application web de planification intelligente des révisions pour étudiants
                     </p>
                     <div class="project-footer">
-                        <button class="project-button">Voir projet</button>
+                        <button class="project-button" id="planifyme-btn">Voir projet</button>
                             <div class="tech-logos">
                                 <div class="tech-logo angular">
                                     <!-- Angular moderne -->
@@ -924,7 +1361,7 @@
                         Application web intelligente de création de CV personnalisés
                     </p>
                     <div class="project-footer">
-                        <button class="project-button">Voir projet</button>
+                        <button class="project-button" id="cvolution-btn">Voir projet</button>
                         <div class="tech-logos">
                             <div class="tech-logo dotnet">
                                 <!-- ASP.NET Core MVC -->
@@ -1252,7 +1689,7 @@
                 <div class="project-content">
                     <div class="project-header">
                         <div class="project-date">Juillet 2022</div>
-                        <div class="project-location">Centre National de l'Informatique (CNI)</div>
+                        <div class="project-location">CNI</div>
                     </div>
                     <p class="project-description">
                         Application web de gestion des stagiaires
@@ -1368,5 +1805,463 @@
             </div>
 </div>
 </section>
+
+<!-- Modal pour les détails du PlanifyMe -->
+<div class="modal-overlay" id="project-modal">
+    <div class="modal-container">
+        <button class="modal-close" id="modal-close">×</button>
+        <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title-container">
+                <h2 class="modal-title">PlanifyMe <span class="project-date-modal">Juin 2025</span></h2>
+                <div class="project-header">
+                    <div class="project-location-modal">TEK-UP</div>
+                </div>
+            </div>
+        </div>            
+            <p class="modal-description">
+                Une application web intelligente, conçue spécialement pour accompagner les étudiants dans l'organisation de leurs révisions et examens.
+                <br><br>
+                <strong>Fonctionnalités clés :</strong><br>
+                ✅ Inscription via un stepper multi-étapes, permettant aux étudiants de préciser leurs choix de révision, la durée, leurs disponibilités, etc.<br>
+                ✅ Gestion complète des matières avec leurs détails : nom, coefficient, difficulté, date d'examen, niveau de préparation…<br>
+                ✅ Visualisation claire des examens dans un calendrier mensuel interactif, avec navigation entre les mois.<br>
+                ✅ Génération automatique de planning de révision personnalisé selon les critères : date d'examen, difficulté, niveau de préparation.<br>
+                ✅ Tableau de bord dynamique avec des statistiques graphiques<br>
+                ✅ Envoi d'e-mails et notifications intelligentes pour signaler les examens proches ou les séances de révision à venir.
+            </p>
+                        <div class="modal-technologies">
+                <h3>Technologies utilisées</h3>
+                <div class="modal-tech-logos">
+                    <div class="modal-tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" 
+                            alt="Angular 19" 
+                            title="Angular 19">
+                    </div>
+                    <div class="modal-tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" 
+                            alt="Spring Boot" 
+                            title="Spring Boot">
+                    </div>
+                    <div class="modal-tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" 
+                            alt="GraphQL" 
+                            title="GraphQL">
+                    </div>
+                    <div class="modal-tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" 
+                            alt="MySQL" 
+                            title="MySQL">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Remplacez la section .modal-screenshots dans votre HTML par ceci -->
+            <div class="modal-screenshots">
+                <div class="screenshots-column-1">
+                    <img src="/images/Captures/PlanifyMe/1.jpg" alt="Capture PlanifyMe 1" class="modal-screenshot">
+                    <img src="/images/Captures/PlanifyMe/2.jpg" alt="Capture PlanifyMe 2" class="modal-screenshot">
+                    <img src="/images/Captures/PlanifyMe/4.jpg" alt="Capture PlanifyMe 4" class="modal-screenshot">
+                </div>
+                <!-- Modifiez uniquement la deuxième colonne dans votre HTML -->
+                <div class="screenshots-column-2">
+                    <img src="/images/Captures/PlanifyMe/5.jpg" alt="Capture PlanifyMe 3" class="modal-screenshot">
+                    <img src="/images/Captures/PlanifyMe/3.jpg" alt="Capture PlanifyMe 5" class="modal-screenshot">
+                </div>
+            </div>            
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-secondary">Fermer</button>
+                <a href="https://github.com/votre-username/planifyme" class="modal-btn-github" target="_blank">
+                    Voir sur GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal pour les détails du projet CVolution -->
+<div class="modal-overlay" id="cvolution-modal">
+    <div class="modal-container">
+        <button class="modal-close" id="cvolution-modal-close">×</button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title-container">
+                    <h2 class="modal-title">CVolution <span class="project-date-modal">Juin 2025</span></h2>
+                    <div class="project-header">
+                        <div class="project-location-modal">TEK-UP</div>
+                    </div>
+                </div>
+            </div>
+            <p class="modal-description">
+                Une application web innovante de création de CV personnalisés.
+                <br><br>
+                <strong>Fonctionnalités clés :</strong><br>
+                ✅ Deux profils : administrateur et utilisateur<br>
+                ✅ Génération automatique de CV avec format par défaut ou personnalisé<br>
+                ✅ Interface de création guidée via un stepper interactif<br>
+                ✅ Système de drag and drop pour créer des modèles de CV personnalisés<br>
+                ✅ Génération de CV professionnel au format PDF<br>
+                ✅ Gestion des sections modulables (profil, photo, formations, expériences, etc.)<br>
+                ✅ Adaptation du CV selon le modèle sélectionné
+            </p>
+            <div class="modal-technologies">
+                <h3>Technologies utilisées</h3>
+                <div class="modal-tech-logos">
+                    <div class="modal-tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" 
+                            alt="ASP.NET Core MVC" 
+                            title="ASP.NET Core MVC">
+                    </div>
+                    <div class="modal-tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" 
+                            alt="Razor Pages" 
+                            title="Razor Pages (cshtml)">
+                    </div>
+                    <div class="modal-tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" 
+                            alt="SQL Server" 
+                            title="SQL Server">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-screenshots">
+                <div class="screenshots-column-1">
+                    <img src="/images/Captures/CVolution/1.jpg" alt="Capture CVolution 1" class="modal-screenshot">
+                    <img src="/images/Captures/CVolution/2.jpg" alt="Capture CVolution 2" class="modal-screenshot">
+                </div>
+                <div class="screenshots-column-2">
+                    <img src="/images/Captures/CVolution/3.jpg" alt="Capture CVolution 4" class="modal-screenshot">
+                    <img src="/images/Captures/CVolution/4.jpg" alt="Capture CVolution 4" class="modal-screenshot">
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-secondary">Fermer</button>
+                <a href="https://github.com/votre-username/cvolution" class="modal-btn-github" target="_blank">
+                    Voir sur GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal pour les détails du projet MemoMe -->
+<div class="modal-overlay" id="memome-modal">
+    <div class="modal-container">
+        <button class="modal-close" id="memome-modal-close">×</button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title-container">
+                    <h2 class="modal-title">MemoMe <span class="project-date-modal">Mai 2025</span></h2>
+                    <div class="project-header">
+                        <div class="project-location-modal">TEK-UP</div>
+                    </div>
+                </div>
+            </div>
+            <p class="modal-description">
+                Une application mobile de gestion des mots de passe, notes et documents.
+                <br><br>
+                <strong>Fonctionnalités principales :</strong><br>
+                ✅ Enregistrer et gérer vos mots de passe (avec génération automatique ou manuelle)<br>
+                ✅ Sauvegarder tous types de documents : PDF, images, vidéos, audios, etc.<br>
+                ✅ Prendre des notes sous forme de post-it avec rappels programmés via notifications<br>
+                ✅ Gérer votre profil avec une interface moderne, fluide et intuitive<br>
+                ✅ Collaboration d'équipe avec Nour Allah Halloul
+            </p>
+            <div class="modal-technologies">
+                <h3>Technologies utilisées</h3>
+                <div class="modal-tech-logos">
+                    <div class="modal-tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" 
+                            alt="Android Studio" 
+                            title="Android Studio">
+                    </div>
+                    <div class="modal-tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" 
+                            alt="Java" 
+                            title="Java">
+                    </div>
+                    <div class="modal-tech-logo">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" 
+                            alt="Firebase" 
+                            title="Firebase">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-screenshots" style="grid-template-columns: repeat(4, 1fr);">
+                <img src="/images/Captures/MemoMe/1.jpg" alt="Capture MemoMe 1" class="modal-screenshot">
+                <img src="/images/Captures/MemoMe/2.jpg" alt="Capture MemoMe 2" class="modal-screenshot">
+                <img src="/images/Captures/MemoMe/3.jpg" alt="Capture MemoMe 3" class="modal-screenshot">
+                <img src="/images/Captures/MemoMe/4.jpg" alt="Capture MemoMe 4" class="modal-screenshot">
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-secondary">Fermer</button>
+                <a href="https://github.com/votre-username/memome" class="modal-btn-github" target="_blank">
+                    Voir sur GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
+<script>
+// Fonctionnalité pour le modal du projet
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('project-modal');
+    const closeModal = document.getElementById('modal-close');
+    const modalSecondaryBtn = document.querySelector('.modal-btn-secondary');
+    
+    // Trouver le bouton "Voir projet" du premier projet (PlanifyMe)
+    const planifyMeButton = document.querySelector('.project-card:first-child .project-button');
+    
+    // Ouvrir le modal quand on clique sur le bouton du premier projet
+    if (planifyMeButton) {
+        planifyMeButton.addEventListener('click', function() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Empêcher le défilement
+        });
+    }
+    
+    // Fermer le modal
+    function closeModalFunction() {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Rétablir le défilement
+    }
+        
+    if (closeModal) {
+        closeModal.addEventListener('click', closeModalFunction);
+    }
+    
+    if (modalSecondaryBtn) {
+        modalSecondaryBtn.addEventListener('click', closeModalFunction);
+    }
+    
+    // Fermer le modal en cliquant à l'extérieur
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModalFunction();
+        }
+    });
+    
+    // Fermer avec la touche Échap
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModalFunction();
+        }
+    });
+});
+
+// Modifiez votre code JavaScript existant comme suit:
+
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('project-modal');
+    const closeModal = document.getElementById('modal-close');
+    const modalSecondaryBtn = document.querySelector('.modal-btn-secondary');
+    const modalContainer = document.querySelector('.modal-container');
+    const modalContent = document.querySelector('.modal-content');
+    
+    // Trouver le bouton "Voir projet" du premier projet (PlanifyMe)
+    const planifyMeButton = document.querySelector('.project-card:first-child .project-button');
+    
+    // Ouvrir le modal quand on clique sur le bouton du premier projet
+    if (planifyMeButton) {
+        planifyMeButton.addEventListener('click', function() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Activer les animations des éléments du modal
+            setTimeout(() => {
+                modalContent.classList.add('animated');
+            }, 100);
+        });
+    }
+    
+    // Fermer le modal
+    function closeModalFunction() {
+        modalContent.classList.remove('animated');
+        modalContainer.classList.add('closing');
+        
+        setTimeout(() => {
+            modal.classList.remove('active');
+            modalContainer.classList.remove('closing');
+            document.body.style.overflow = '';
+        }, 400); // Correspond à la durée de l'animation de sortie
+    }
+        
+    if (closeModal) {
+        closeModal.addEventListener('click', closeModalFunction);
+    }
+    
+    if (modalSecondaryBtn) {
+        modalSecondaryBtn.addEventListener('click', closeModalFunction);
+    }
+    
+    // Fermer le modal en cliquant à l'extérieur
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModalFunction();
+        }
+    });
+    
+    // Fermer avec la touche Échap
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModalFunction();
+        }
+    });
+    
+    // Lightbox pour les screenshots
+    const screenshots = document.querySelectorAll('.modal-screenshot');
+    const lightbox = document.createElement('div');
+    lightbox.className = 'screenshot-lightbox';
+    lightbox.innerHTML = `
+        <span class="lightbox-close">×</span>
+        <img class="lightbox-image" src="" alt="Agrandissement capture d'écran">
+    `;
+    document.body.appendChild(lightbox);
+    
+    const lightboxImage = lightbox.querySelector('.lightbox-image');
+    const lightboxClose = lightbox.querySelector('.lightbox-close');
+    
+    screenshots.forEach(screenshot => {
+        screenshot.addEventListener('click', function() {
+            lightboxImage.src = this.src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    
+    lightboxClose.addEventListener('click', function() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+});
+
+
+// Ajoutez ce code dans votre section JavaScript existante
+
+// Fonctionnalité pour le modal CVolution
+const cvolutionModal = document.getElementById('cvolution-modal');
+const closeCVolutionModal = document.getElementById('cvolution-modal-close');
+const cvolutionButton = document.getElementById('cvolution-btn');
+const cvolutionModalSecondaryBtn = cvolutionModal.querySelector('.modal-btn-secondary');
+
+// Ouvrir le modal CVolution
+if (cvolutionButton) {
+    cvolutionButton.addEventListener('click', function() {
+        cvolutionModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Activer les animations des éléments du modal
+        setTimeout(() => {
+            cvolutionModal.querySelector('.modal-content').classList.add('animated');
+        }, 100);
+    });
+}
+
+// Fermer le modal CVolution
+function closeCVolutionModalFunction() {
+    cvolutionModal.querySelector('.modal-content').classList.remove('animated');
+    cvolutionModal.querySelector('.modal-container').classList.add('closing');
+    
+    setTimeout(() => {
+        cvolutionModal.classList.remove('active');
+        cvolutionModal.querySelector('.modal-container').classList.remove('closing');
+        document.body.style.overflow = '';
+    }, 400);
+}
+
+if (closeCVolutionModal) {
+    closeCVolutionModal.addEventListener('click', closeCVolutionModalFunction);
+}
+
+if (cvolutionModalSecondaryBtn) {
+    cvolutionModalSecondaryBtn.addEventListener('click', closeCVolutionModalFunction);
+}
+
+// Fermer le modal en cliquant à l'extérieur
+cvolutionModal.addEventListener('click', function(e) {
+    if (e.target === cvolutionModal) {
+        closeCVolutionModalFunction();
+    }
+});
+
+// Fermer avec la touche Échap
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && cvolutionModal.classList.contains('active')) {
+        closeCVolutionModalFunction();
+    }
+});
+
+
+// Fonctionnalité pour le modal MemoMe
+const memomeModal = document.getElementById('memome-modal');
+const closeMemomeModal = document.getElementById('memome-modal-close');
+const memomeButton = document.querySelector('.project-card:nth-child(3) .project-button'); // 3ème projet = MemoMe
+const memomeModalSecondaryBtn = memomeModal.querySelector('.modal-btn-secondary');
+
+// Ajouter un ID au bouton MemoMe pour le cibler plus facilement
+if (memomeButton) {
+    memomeButton.id = 'memome-btn';
+    
+    // Ouvrir le modal MemoMe
+    memomeButton.addEventListener('click', function() {
+        memomeModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Activer les animations des éléments du modal
+        setTimeout(() => {
+            memomeModal.querySelector('.modal-content').classList.add('animated');
+        }, 100);
+    });
+}
+
+// Fermer le modal MemoMe
+function closeMemomeModalFunction() {
+    memomeModal.querySelector('.modal-content').classList.remove('animated');
+    memomeModal.querySelector('.modal-container').classList.add('closing');
+    
+    setTimeout(() => {
+        memomeModal.classList.remove('active');
+        memomeModal.querySelector('.modal-container').classList.remove('closing');
+        document.body.style.overflow = '';
+    }, 400);
+}
+
+if (closeMemomeModal) {
+    closeMemomeModal.addEventListener('click', closeMemomeModalFunction);
+}
+
+if (memomeModalSecondaryBtn) {
+    memomeModalSecondaryBtn.addEventListener('click', closeMemomeModalFunction);
+}
+
+// Fermer le modal en cliquant à l'extérieur
+memomeModal.addEventListener('click', function(e) {
+    if (e.target === memomeModal) {
+        closeMemomeModalFunction();
+    }
+});
+
+// Fermer avec la touche Échap
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && memomeModal.classList.contains('active')) {
+        closeMemomeModalFunction();
+    }
+});
+</script>
 </html>
