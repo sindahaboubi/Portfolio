@@ -579,3 +579,352 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
+// Animation des barres de compétences linguistiques
+document.addEventListener('DOMContentLoaded', function() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const languageBars = entry.target.querySelectorAll('.language-fill');
+                languageBars.forEach(bar => {
+                    // Réinitialiser l'animation
+                    bar.style.width = '0';
+                    setTimeout(() => {
+                        bar.style.width = bar.getAttribute('data-width') || bar.style.width;
+                    }, 100);
+                });
+            }
+        });
+    }, { threshold: 0.5 });
+
+    // Observer la section des langues
+    const languagesSection = document.getElementById('languages');
+    if (languagesSection) {
+        observer.observe(languagesSection);
+    }
+    
+    // Définir les largeurs initiales pour les barres de langue
+    document.querySelectorAll('.language-fill').forEach(bar => {
+        const computedWidth = window.getComputedStyle(bar).width;
+        bar.setAttribute('data-width', computedWidth);
+        bar.style.width = '0'; // Commencer à 0 pour l'animation
+    });
+});
+
+
+// services.js
+const servicesData = {
+    "services": [
+        {
+            "title": "Test logiciel (QA)",
+             "icon": "fa-solid fa-check", 
+            "items": [
+                "Tests fonctionnels manuels pour applications web et mobile",
+                "Rédaction de cas de test, plans de tests et rapports d'anomalies",
+                "Tests automatisés avec Selenium",
+                "Suivi des bugs via Jira"
+            ]
+        },
+        {
+            "title": "Développement Web",
+            "icon": "fa-solid fa-code",
+            "items": [
+                "Conception et création d'applications web",
+                "Développement front et back-end",
+                "Utilisation de bases de données"
+            ]
+        },
+        {
+            "title": "Développement Mobile",
+            "icon": "fa-solid fa-mobile-screen",
+            "items": [
+                "Conception et développement d'applications Android avec Android Studio"
+            ]
+        },
+        {
+            "title": "Architectures",
+            "icon": "fa-solid fa-sitemap",
+            "items": [
+                "Conception d'architectures microservices et MVC",
+                "Création et consommation de Web Services REST/SOAP"
+            ]
+        },
+        {
+            "title": "Gestion de projets",
+            "icon": "fa-solid fa-tasks",
+            "items": [
+                "Suivi de projets avec SCRUM et méthode Cascade",
+                "Organisation des tâches avec Jira"
+            ]
+        }
+    ]
+};
+
+// Fonction pour générer les cartes de services
+function generateServicesCards() {
+    const servicesGrid = document.querySelector('.services-grid');
+    
+    // Première ligne (3 cartes)
+    const firstRow = document.createElement('div');
+    firstRow.className = 'services-row';
+    
+    // Deuxième ligne (2 cartes centrées)
+    const secondRow = document.createElement('div');
+    secondRow.className = 'services-row centered';
+    
+    // Ajouter les cartes aux lignes appropriées
+    servicesData.services.forEach((service, index) => {
+        const serviceCard = document.createElement('div');
+        serviceCard.className = 'service-card';
+            
+    serviceCard.innerHTML = `
+        <h3><i class="${service.icon}" style="margin-right: 10px;"></i>${service.title}</h3>
+        <ul class="service-list">
+            ${service.items.map(item => `<li>${item}</li>`).join('')}
+        </ul>
+    `;
+            
+        if (index < 3) {
+            firstRow.appendChild(serviceCard);
+        } else {
+            secondRow.appendChild(serviceCard);
+        }
+    });
+    
+    // Vider le contenu existant et ajouter les nouvelles lignes
+    servicesGrid.innerHTML = '';
+    servicesGrid.appendChild(firstRow);
+    servicesGrid.appendChild(secondRow);
+}
+
+// Exécuter la génération des services quand le DOM est chargé
+document.addEventListener('DOMContentLoaded', generateServicesCards);
+
+
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".navbar");
+
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+});
+
+// Fermer menu quand on clique sur un lien
+document.querySelectorAll(".nav-menu a").forEach(link => {
+    link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    });
+});
+// Fermer le menu déroulant en cliquant ailleurs
+document.addEventListener('click', function(event) {
+    const dropdowns = document.getElementsByClassName('dropdown-content');
+    for (let i = 0; i < dropdowns.length; i++) {
+        const openDropdown = dropdowns[i];
+        if (openDropdown.style.display === 'block' && !event.target.matches('.dropbtn')) {
+            openDropdown.style.display = 'none';
+        }
+    }
+});
+
+
+// Animation de navigation fluide
+document.addEventListener('DOMContentLoaded', function() {
+    // Sélectionner tous les liens de navigation
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    
+    // Ajouter un écouteur d'événement à chaque lien
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Obtenir l'ID de la cible à partir de l'attribut href
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                // Calculer la position de la section cible
+                const targetPosition = targetSection.offsetTop - 80; // Ajuster pour le header
+                
+                // Animation fluide vers la section
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Fermer le menu hamburger si ouvert (optionnel)
+                const hamburger = document.querySelector('.hamburger');
+                const nav = document.querySelector('.nav');
+                if (hamburger.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('active');
+                }
+            }
+        });
+    });
+    
+    // Gestion du menu hamburger (si vous voulez le garder)
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('.nav');
+    
+    if (hamburger) {
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+    }
+});
+
+
+// Animation d'apparition des sections au scroll
+function checkScroll() {
+    const sections = document.querySelectorAll('section');
+    const windowHeight = window.innerHeight;
+    
+    sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        
+        if (sectionTop < windowHeight * 0.75) {
+            section.classList.add('visible');
+        }
+    });
+}
+
+// Vérifier la position au chargement et au défilement
+window.addEventListener('load', checkScroll);
+window.addEventListener('scroll', checkScroll);
+
+// faire apparaître la section Skills au scroll
+const skillsSection = document.querySelector('.skills-section');
+window.addEventListener('scroll', () => {
+    const sectionPos = skillsSection.getBoundingClientRect().top;
+    const screenPos = window.innerHeight / 1.2;
+
+    if(sectionPos < screenPos){
+        skillsSection.querySelectorAll('.skill-category').forEach(cat => {
+            cat.style.opacity = 1;
+            cat.style.transform = 'translateY(0)';
+        });
+    }
+});
+
+
+
+        // Script pour les animations de navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ajouter la classe de transition à toutes les sections
+            const sections = document.querySelectorAll('section, main');
+            sections.forEach(section => {
+                section.classList.add('section-transition');
+            });
+            
+            // Observer pour l'animation des sections
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('section-visible');
+                        
+                        // Animation spécifique pour les cartes de projet
+                        if (entry.target.id === 'projets') {
+                            const projectCards = document.querySelectorAll('.project-card');
+                            projectCards.forEach(card => {
+                                card.classList.add('visible');
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            // Observer chaque section
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Gestion du scroll pour le header et la navigation active
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('.header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                
+                // Mise à jour des liens actifs
+                const scrollPosition = window.scrollY + 100;
+                
+                document.querySelectorAll('section').forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        document.querySelectorAll('.nav a').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === '#' + sectionId) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // Navigation fluide
+            document.querySelectorAll('.nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Animation pour le menu hamburger (si vous l'utilisez)
+            const hamburger = document.querySelector('.hamburger');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    document.querySelector('.nav').classList.toggle('active');
+                });
+            }
+        });
+// script.js
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
+});
+
+
+// Sélectionner toutes les sections
+const sections = document.querySelectorAll('.section');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('section-visible');
+        }
+    });
+}, {
+    threshold: 0.2 // 20% de la section visible pour déclencher
+});
+
+// Observer chaque section
+sections.forEach(section => observer.observe(section));
+
+
