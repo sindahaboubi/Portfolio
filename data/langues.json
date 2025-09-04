@@ -1,0 +1,16 @@
+{
+  "languages": [
+    {
+      "name": "Arabe",
+      "level": "100%"
+    },
+    {
+      "name": "Français",
+      "level": "90%"
+    },
+    {
+      "name": "Anglais",
+      "level": "75%"
+    }
+  ]
+}

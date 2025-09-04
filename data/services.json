@@ -1,0 +1,46 @@
+{
+  "services": [
+    {
+      "title": "Test logiciel (QA)",
+      "icon": "fa-solid fa-check",
+      "items": [
+        "Tests fonctionnels manuels pour applications web et mobile",
+        "Rédaction de cas de test, plans de tests et rapports d'anomalies",
+        "Tests automatisés avec Selenium",
+        "Suivi des bugs via Jira"
+      ]
+    },
+    {
+      "title": "Développement Web",
+      "icon": "fa-solid fa-code",
+      "items": [
+        "Conception et création d'applications web",
+        "Développement front et back-end",
+        "Utilisation de bases de données"
+      ]
+    },
+    {
+      "title": "Développement Mobile",
+      "icon": "fa-solid fa-mobile-screen",
+      "items": [
+        "Conception et développement d'applications Android avec Android Studio"
+      ]
+    },
+    {
+      "title": "Architectures",
+      "icon": "fa-solid fa-sitemap",
+      "items": [
+        "Conception d'architectures microservices et MVC",
+        "Création et consommation de Web Services REST/SOAP"
+      ]
+    },
+    {
+      "title": "Gestion de projets",
+      "icon": "fa-solid fa-tasks",
+      "items": [
+        "Suivi de projets avec SCRUM et méthode Cascade",
+        "Organisation des tâches avec Jira"
+      ]
+    }
+  ]
+}

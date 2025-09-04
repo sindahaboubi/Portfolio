@@ -1,0 +1,36 @@
+{
+  "formations": [
+    {
+      "title": "Diplôme d'Ingénieur en Génie Logiciel",
+      "school": "TEK-UP University, Ariana",
+      "period": "2024 - en cours",
+      "description": "3ème année cycle d'ingénieurs - Spécialisation en développement web, test logiciel et gestion de projets",
+      "level": "Cycle d'Ingénieur",
+      "status": "En cours"
+    },
+    {
+      "title": "Développement des systèmes d'informations",
+      "school": "ISET Charguia, Tunis",
+      "period": "2020 - 2023",
+      "description": "Formation complète en développement d'applications web et mobiles, bases de données et architectures logicielles",
+      "level": "Licence Appliquée",
+      "status": ""
+    },
+    {
+      "title": "Formation Spring Boot + Angular",
+      "school": "CrocoCoder, Tunis",
+      "period": "Juillet - Sept 2022",
+      "description": "Formation intensive sur les technologies modernes de développement web",
+      "level": "Formation Pro",
+      "status": ""
+    },
+    {
+      "title": "Baccalauréat Sciences Expérimentales",
+      "school": "Lycée Hamouda Becha, Manouba",
+      "period": "2020",
+      "description": "Diplôme du baccalauréat avec spécialisation en sciences expérimentales",
+      "level": "Baccalauréat",
+      "status": ""
+    }
+  ]
+}

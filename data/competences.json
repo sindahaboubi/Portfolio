@@ -1,0 +1,185 @@
+{
+  "technicalSkills": {
+    "languages": {
+      "title": "Langages",
+      "skills": [
+        {
+          "name": "HTML5",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+        },
+        {
+          "name": "CSS3",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+        },
+        {
+          "name": "JavaScript",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+        },
+        {
+          "name": "Java",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+        },
+        {
+          "name": "Python",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+        },
+        {
+          "name": "PHP",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+        },
+        {
+          "name": "PL/SQL",
+          "icon": "https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png"
+        }
+      ]
+    },
+    "frameworks": {
+      "title": "Frameworks",
+      "skills": [
+        {
+          "name": "Angular (v14 à v19)",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg"
+        },
+        {
+          "name": "Spring Boot",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
+        },
+        {
+          "name": ".NET Core",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg"
+        },
+        {
+          "name": "Symfony",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/symfony/symfony-original.svg"
+        },
+        {
+          "name": "Bootstrap",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
+        },
+        {
+          "name": "Express.js",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+        },
+        {
+          "name": "JavaFX",
+          "icon": "☕",
+          "isEmoji": true
+        }
+      ]
+    },
+    "databases": {
+      "title": "Bases de données",
+      "skills": [
+        {
+          "name": "MySQL",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+        },
+        {
+          "name": "Oracle",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg"
+        },
+        {
+          "name": "MongoDB",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+        }
+      ]
+    },
+    "mobile": {
+      "title": "Développement mobile",
+      "skills": [
+        {
+          "name": "Android Studio (Java)",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg"
+        }
+      ]
+    },
+    "tools": {
+      "title": "Outils",
+      "skills": [
+        {
+          "name": "GitHub",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+        },
+        {
+          "name": "Jira",
+          "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg"
+        },
+        {
+          "name": "UML",
+          "icon": "📊",
+          "isEmoji": true
+        },
+        {
+          "name": "Microsoft Office",
+          "icon": "💼",
+          "isEmoji": true
+        }
+      ]
+    },
+    "projectManagement": {
+      "title": "Gestion de projet",
+      "skills": [
+        {
+          "name": "SCRUM",
+          "icon": "🏃‍♂️",
+          "isEmoji": true
+        },
+        {
+          "name": "Méthode classique (Cascade)",
+          "icon": "🔒",
+          "isEmoji": true
+        }
+      ]
+    },
+    "webservices": {
+      "title": "Webservices",
+      "skills": [
+        {
+          "name": "SOAP",
+          "icon": "📡",
+          "isEmoji": true
+        },
+        {
+          "name": "REST",
+          "icon": "🔗",
+          "isEmoji": true
+        }
+      ]
+    },
+    "architectures": {
+      "title": "Architectures",
+      "skills": [
+        {
+          "name": "SOA",
+          "icon": "🌐",
+          "isEmoji": true
+        },
+        {
+          "name": "Micro-services",
+          "icon": "🔗",
+          "isEmoji": true
+        },
+        {
+          "name": "MVC",
+          "icon": "📋",
+          "isEmoji": true
+        }
+      ]
+    }
+  },
+  "skillsLayout": [
+    { "row": 1, "categories": ["languages", "frameworks"] },
+    { "row": 2, "categories": ["databases", "mobile", "tools", "projectManagement"] },
+    { "row": 3, "categories": ["webservices", "architectures"], "centerRow": true }
+  ],
+  "personalSkills": {
+    "title": "Compétences personnelles",
+    "skills": [
+      "Travail en équipe",
+      "Créativité",
+      "Adaptabilité",
+      "Capacité d'apprentissage rapide"
+    ]
+  }
+
+}

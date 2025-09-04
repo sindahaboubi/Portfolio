@@ -1,0 +1,36 @@
+{
+  "experiences": [
+    {
+      "title": "Testeur QA Junior",
+      "company": "Numeryx Tunisie",
+      "period": "Nov 2023 – Présent",
+      "type": "list",
+      "description": [
+        "Réalisation de tests manuels fonctionnels sur différentes applications web",
+        "Conception et exécution de tests automatisés avec Selenium",
+        "Rédaction de cas de test, exécution de scénarios de validation et suivi des anomalies"
+      ]
+    },
+    {
+      "title": "Stage PFE",
+      "company": "Numeryx Tunisie",
+      "period": "Fév 2023 – Mai 2023",
+      "type": "text",
+      "description": "Conception et développement d'une application web micro-services de gestion et contrôle des projets Scrum en utilisant Angular 15, Spring Boot et PostgreSQL."
+    },
+    {
+      "title": "Stage de perfectionnement",
+      "company": "CNI, Tunis",
+      "period": "Juin 2022",
+      "type": "text",
+      "description": "Réalisation d'une application web de gestion des stagiaires en utilisant Angular 14, PHP et MySQL."
+    },
+    {
+      "title": "Stage d'initiation",
+      "company": "TRANSTU, Tunis",
+      "period": "Juillet 2021",
+      "type": "text",
+      "description": "Observation de la vie professionnelle et réalisation de plusieurs tâches."
+    }
+  ]
+}

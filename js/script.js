@@ -1,24 +1,20 @@
-// Fonctionnalité pour le modal du projet
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('project-modal');
     const closeModal = document.getElementById('modal-close');
     const modalSecondaryBtn = document.querySelector('.modal-btn-secondary');
     
-    // Trouver le bouton "Voir projet" du premier projet (PlanifyMe)
     const planifyMeButton = document.querySelector('.project-card:first-child .project-button');
     
-    // Ouvrir le modal quand on clique sur le bouton du premier projet
     if (planifyMeButton) {
         planifyMeButton.addEventListener('click', function() {
             modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Empêcher le défilement
+            document.body.style.overflow = 'hidden';
         });
     }
     
-    // Fermer le modal
     function closeModalFunction() {
         modal.classList.remove('active');
-        document.body.style.overflow = ''; // Rétablir le défilement
+        document.body.style.overflow = '';
     }
         
     if (closeModal) {
@@ -29,22 +25,18 @@ document.addEventListener('DOMContentLoaded', function() {
         modalSecondaryBtn.addEventListener('click', closeModalFunction);
     }
     
-    // Fermer le modal en cliquant à l'extérieur
     modal.addEventListener('click', function(e) {
         if (e.target === modal) {
             closeModalFunction();
         }
     });
     
-    // Fermer avec la touche Échap
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
             closeModalFunction();
         }
     });
 });
-
-// Modifiez votre code JavaScript existant comme suit:
 
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('project-modal');
@@ -53,23 +45,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalContainer = document.querySelector('.modal-container');
     const modalContent = document.querySelector('.modal-content');
     
-    // Trouver le bouton "Voir projet" du premier projet (PlanifyMe)
     const planifyMeButton = document.querySelector('.project-card:first-child .project-button');
     
-    // Ouvrir le modal quand on clique sur le bouton du premier projet
     if (planifyMeButton) {
         planifyMeButton.addEventListener('click', function() {
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
             
-            // Activer les animations des éléments du modal
             setTimeout(() => {
                 modalContent.classList.add('animated');
             }, 100);
         });
     }
     
-    // Fermer le modal
     function closeModalFunction() {
         modalContent.classList.remove('animated');
         modalContainer.classList.add('closing');
@@ -78,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.classList.remove('active');
             modalContainer.classList.remove('closing');
             document.body.style.overflow = '';
-        }, 400); // Correspond à la durée de l'animation de sortie
+        }, 400);
     }
         
     if (closeModal) {
@@ -89,21 +77,18 @@ document.addEventListener('DOMContentLoaded', function() {
         modalSecondaryBtn.addEventListener('click', closeModalFunction);
     }
     
-    // Fermer le modal en cliquant à l'extérieur
     modal.addEventListener('click', function(e) {
         if (e.target === modal) {
             closeModalFunction();
         }
     });
     
-    // Fermer avec la touche Échap
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
             closeModalFunction();
         }
     });
     
-    // Lightbox pour les screenshots
     const screenshots = document.querySelectorAll('.modal-screenshot');
     const lightbox = document.createElement('div');
     lightbox.className = 'screenshot-lightbox';
@@ -144,29 +129,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
-// Ajoutez ce code dans votre section JavaScript existante
-
-// Fonctionnalité pour le modal CVolution
 const cvolutionModal = document.getElementById('cvolution-modal');
 const closeCVolutionModal = document.getElementById('cvolution-modal-close');
 const cvolutionButton = document.getElementById('cvolution-btn');
 const cvolutionModalSecondaryBtn = cvolutionModal.querySelector('.modal-btn-secondary');
 
-// Ouvrir le modal CVolution
 if (cvolutionButton) {
     cvolutionButton.addEventListener('click', function() {
         cvolutionModal.classList.add('active');
         document.body.style.overflow = 'hidden';
         
-        // Activer les animations des éléments du modal
         setTimeout(() => {
             cvolutionModal.querySelector('.modal-content').classList.add('animated');
         }, 100);
     });
 }
 
-// Fermer le modal CVolution
 function closeCVolutionModalFunction() {
     cvolutionModal.querySelector('.modal-content').classList.remove('animated');
     cvolutionModal.querySelector('.modal-container').classList.add('closing');
@@ -186,44 +164,36 @@ if (cvolutionModalSecondaryBtn) {
     cvolutionModalSecondaryBtn.addEventListener('click', closeCVolutionModalFunction);
 }
 
-// Fermer le modal en cliquant à l'extérieur
 cvolutionModal.addEventListener('click', function(e) {
     if (e.target === cvolutionModal) {
         closeCVolutionModalFunction();
     }
 });
 
-// Fermer avec la touche Échap
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && cvolutionModal.classList.contains('active')) {
         closeCVolutionModalFunction();
     }
 });
 
-
-// Fonctionnalité pour le modal MemoMe
 const memomeModal = document.getElementById('memome-modal');
 const closeMemomeModal = document.getElementById('memome-modal-close');
-const memomeButton = document.querySelector('.project-card:nth-child(3) .project-button'); // 3ème projet = MemoMe
+const memomeButton = document.querySelector('.project-card:nth-child(3) .project-button');
 const memomeModalSecondaryBtn = memomeModal.querySelector('.modal-btn-secondary');
 
-// Ajouter un ID au bouton MemoMe pour le cibler plus facilement
 if (memomeButton) {
     memomeButton.id = 'memome-btn';
     
-    // Ouvrir le modal MemoMe
     memomeButton.addEventListener('click', function() {
         memomeModal.classList.add('active');
         document.body.style.overflow = 'hidden';
         
-        // Activer les animations des éléments du modal
         setTimeout(() => {
             memomeModal.querySelector('.modal-content').classList.add('animated');
         }, 100);
     });
 }
 
-// Fermer le modal MemoMe
 function closeMemomeModalFunction() {
     memomeModal.querySelector('.modal-content').classList.remove('animated');
     memomeModal.querySelector('.modal-container').classList.add('closing');
@@ -243,44 +213,36 @@ if (memomeModalSecondaryBtn) {
     memomeModalSecondaryBtn.addEventListener('click', closeMemomeModalFunction);
 }
 
-// Fermer le modal en cliquant à l'extérieur
 memomeModal.addEventListener('click', function(e) {
     if (e.target === memomeModal) {
         closeMemomeModalFunction();
     }
 });
 
-// Fermer avec la touche Échap
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && memomeModal.classList.contains('active')) {
         closeMemomeModalFunction();
     }
 });
 
-
-// Fonctionnalité pour le modal TickTask
 const ticktaskModal = document.getElementById('ticktask-modal');
 const closeTicktaskModal = document.getElementById('ticktask-modal-close');
-const ticktaskButton = document.querySelector('.project-card:nth-child(4) .project-button'); // 4ème projet = TickTask
+const ticktaskButton = document.querySelector('.project-card:nth-child(4) .project-button');
 const ticktaskModalSecondaryBtn = ticktaskModal.querySelector('.modal-btn-secondary');
 
-// Ajouter un ID au bouton TickTask pour le cibler plus facilement
 if (ticktaskButton) {
     ticktaskButton.id = 'ticktask-btn';
     
-    // Ouvrir le modal TickTask
     ticktaskButton.addEventListener('click', function() {
         ticktaskModal.classList.add('active');
         document.body.style.overflow = 'hidden';
         
-        // Activer les animations des éléments du modal
         setTimeout(() => {
             ticktaskModal.querySelector('.modal-content').classList.add('animated');
         }, 100);
     });
 }
 
-// Fermer le modal TickTask
 function closeTicktaskModalFunction() {
     ticktaskModal.querySelector('.modal-content').classList.remove('animated');
     ticktaskModal.querySelector('.modal-container').classList.add('closing');
@@ -300,44 +262,36 @@ if (ticktaskModalSecondaryBtn) {
     ticktaskModalSecondaryBtn.addEventListener('click', closeTicktaskModalFunction);
 }
 
-// Fermer le modal en cliquant à l'extérieur
 ticktaskModal.addEventListener('click', function(e) {
     if (e.target === ticktaskModal) {
         closeTicktaskModalFunction();
     }
 });
 
-// Fermer avec la touche Échap
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && ticktaskModal.classList.contains('active')) {
         closeTicktaskModalFunction();
     }
 });
 
-
-// Fonctionnalité pour le modal AppStorage
 const appstorageModal = document.getElementById('appstorage-modal');
 const closeAppstorageModal = document.getElementById('appstorage-modal-close');
-const appstorageButton = document.querySelector('.project-card:nth-child(5) .project-button'); // 5ème projet = AppStorage
+const appstorageButton = document.querySelector('.project-card:nth-child(5) .project-button');
 const appstorageModalSecondaryBtn = appstorageModal.querySelector('.modal-btn-secondary');
 
-// Ajouter un ID au bouton AppStorage pour le cibler plus facilement
 if (appstorageButton) {
     appstorageButton.id = 'appstorage-btn';
     
-    // Ouvrir le modal AppStorage
     appstorageButton.addEventListener('click', function() {
         appstorageModal.classList.add('active');
         document.body.style.overflow = 'hidden';
         
-        // Activer les animations des éléments du modal
         setTimeout(() => {
             appstorageModal.querySelector('.modal-content').classList.add('animated');
         }, 100);
     });
 }
 
-// Fermer le modal AppStorage
 function closeAppstorageModalFunction() {
     appstorageModal.querySelector('.modal-content').classList.remove('animated');
     appstorageModal.querySelector('.modal-container').classList.add('closing');
@@ -357,41 +311,34 @@ if (appstorageModalSecondaryBtn) {
     appstorageModalSecondaryBtn.addEventListener('click', closeAppstorageModalFunction);
 }
 
-// Fermer le modal en cliquant à l'extérieur
 appstorageModal.addEventListener('click', function(e) {
     if (e.target === appstorageModal) {
         closeAppstorageModalFunction();
     }
 });
 
-// Fermer avec la touche Échap
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && appstorageModal.classList.contains('active')) {
         closeAppstorageModalFunction();
     }
 });
 
-
-// Fonctionnalité pour le modal TunisiaHope
 const tunisiahopeModal = document.getElementById('tunisiahope-modal');
 const closeTunisiahopeModal = document.getElementById('tunisiahope-modal-close');
 const tunisiahopeButton = document.getElementById('tunisiahope-btn');
 const tunisiahopeModalSecondaryBtn = tunisiahopeModal.querySelector('.modal-btn-secondary');
 
-// Ouvrir le modal TunisiaHope
 if (tunisiahopeButton) {
     tunisiahopeButton.addEventListener('click', function() {
         tunisiahopeModal.classList.add('active');
         document.body.style.overflow = 'hidden';
         
-        // Activer les animations des éléments du modal
         setTimeout(() => {
             tunisiahopeModal.querySelector('.modal-content').classList.add('animated');
         }, 100);
     });
 }
 
-// Fermer le modal TunisiaHope
 function closeTunisiahopeModalFunction() {
     tunisiahopeModal.querySelector('.modal-content').classList.remove('animated');
     tunisiahopeModal.querySelector('.modal-container').classList.add('closing');
@@ -411,40 +358,34 @@ if (tunisiahopeModalSecondaryBtn) {
     tunisiahopeModalSecondaryBtn.addEventListener('click', closeTunisiahopeModalFunction);
 }
 
-// Fermer le modal en cliquant à l'extérieur
 tunisiahopeModal.addEventListener('click', function(e) {
     if (e.target === tunisiahopeModal) {
         closeTunisiahopeModalFunction();
     }
 });
 
-// Fermer avec la touche Échap
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && tunisiahopeModal.classList.contains('active')) {
         closeTunisiahopeModalFunction();
     }
 });
 
-// Fonctionnalité pour le modal PharmaHouse
 const pharmahouseModal = document.getElementById('pharmahouse-modal');
 const closePharmahouseModal = document.getElementById('pharmahouse-modal-close');
 const pharmahouseButton = document.getElementById('pharmahouse-btn');
 const pharmahouseModalSecondaryBtn = pharmahouseModal.querySelector('.modal-btn-secondary');
 
-// Ouvrir le modal PharmaHouse
 if (pharmahouseButton) {
     pharmahouseButton.addEventListener('click', function() {
         pharmahouseModal.classList.add('active');
         document.body.style.overflow = 'hidden';
         
-        // Activer les animations des éléments du modal
         setTimeout(() => {
             pharmahouseModal.querySelector('.modal-content').classList.add('animated');
         }, 100);
     });
 }
 
-// Fermer le modal PharmaHouse
 function closePharmahouseModalFunction() {
     pharmahouseModal.querySelector('.modal-content').classList.remove('animated');
     pharmahouseModal.querySelector('.modal-container').classList.add('closing');
@@ -464,27 +405,24 @@ if (pharmahouseModalSecondaryBtn) {
     pharmahouseModalSecondaryBtn.addEventListener('click', closePharmahouseModalFunction);
 }
 
-// Fermer le modal en cliquant à l'extérieur
 pharmahouseModal.addEventListener('click', function(e) {
     if (e.target === pharmahouseModal) {
         closePharmahouseModalFunction();
     }
 });
 
-// Fermer avec la touche Échap
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && pharmahouseModal.classList.contains('active')) {
         closePharmahouseModalFunction();
     }
 });
-// Fonctionnalité pour le modal ProJiro
+
 const projiroModal = document.getElementById('projiro-modal');
 const closeProjiroModal = document.getElementById('projiro-modal-close');
 const projiroButton = document.getElementById('projiro-btn');
 const projiroModalSecondaryBtn = projiroModal.querySelector('.modal-btn-secondary');
 
     
-    // Ouvrir le modal ProJiro
     projiroButton.addEventListener('click', function() {
         projiroModal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -494,7 +432,6 @@ const projiroModalSecondaryBtn = projiroModal.querySelector('.modal-btn-secondar
         }, 100);
     });
 
-// Fermer le modal ProJiro
 function closeProjiroModalFunction() {
     projiroModal.querySelector('.modal-content').classList.remove('animated');
     projiroModal.querySelector('.modal-container').classList.add('closing');
@@ -526,17 +463,14 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Fonctionnalité pour le modal Stage de perfectionnement
 const stageModal = document.getElementById('stage-modal');
 const closeStageModal = document.getElementById('stage-modal-close');
-const stageButton = document.querySelector('.project-card:nth-child(9) .project-button'); // 9ème projet = Stage
+const stageButton = document.querySelector('.project-card:nth-child(9) .project-button');
 const stageModalSecondaryBtn = stageModal.querySelector('.modal-btn-secondary');
 
-// Ajouter un ID au bouton Stage
 if (stageButton) {
     stageButton.id = 'stage-btn';
     
-    // Ouvrir le modal Stage
     stageButton.addEventListener('click', function() {
         stageModal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -547,7 +481,6 @@ if (stageButton) {
     });
 }
 
-// Fermer le modal Stage
 function closeStageModalFunction() {
     stageModal.querySelector('.modal-content').classList.remove('animated');
     stageModal.querySelector('.modal-container').classList.add('closing');
@@ -579,14 +512,12 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Animation des barres de compétences linguistiques
 document.addEventListener('DOMContentLoaded', function() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const languageBars = entry.target.querySelectorAll('.language-fill');
                 languageBars.forEach(bar => {
-                    // Réinitialiser l'animation
                     bar.style.width = '0';
                     setTimeout(() => {
                         bar.style.width = bar.getAttribute('data-width') || bar.style.width;
@@ -596,92 +527,58 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, { threshold: 0.5 });
 
-    // Observer la section des langues
     const languagesSection = document.getElementById('languages');
     if (languagesSection) {
         observer.observe(languagesSection);
     }
     
-    // Définir les largeurs initiales pour les barres de langue
     document.querySelectorAll('.language-fill').forEach(bar => {
         const computedWidth = window.getComputedStyle(bar).width;
         bar.setAttribute('data-width', computedWidth);
-        bar.style.width = '0'; // Commencer à 0 pour l'animation
+        bar.style.width = '0';
     });
 });
-
-
-// services.js
-const servicesData = {
-    "services": [
-        {
-            "title": "Test logiciel (QA)",
-             "icon": "fa-solid fa-check", 
-            "items": [
-                "Tests fonctionnels manuels pour applications web et mobile",
-                "Rédaction de cas de test, plans de tests et rapports d'anomalies",
-                "Tests automatisés avec Selenium",
-                "Suivi des bugs via Jira"
-            ]
-        },
-        {
-            "title": "Développement Web",
-            "icon": "fa-solid fa-code",
-            "items": [
-                "Conception et création d'applications web",
-                "Développement front et back-end",
-                "Utilisation de bases de données"
-            ]
-        },
-        {
-            "title": "Développement Mobile",
-            "icon": "fa-solid fa-mobile-screen",
-            "items": [
-                "Conception et développement d'applications Android avec Android Studio"
-            ]
-        },
-        {
-            "title": "Architectures",
-            "icon": "fa-solid fa-sitemap",
-            "items": [
-                "Conception d'architectures microservices et MVC",
-                "Création et consommation de Web Services REST/SOAP"
-            ]
-        },
-        {
-            "title": "Gestion de projets",
-            "icon": "fa-solid fa-tasks",
-            "items": [
-                "Suivi de projets avec SCRUM et méthode Cascade",
-                "Organisation des tâches avec Jira"
-            ]
+async function loadServicesData() {
+    try {
+        const response = await fetch('data/services.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
-    ]
-};
+        const servicesData = await response.json();
+        return servicesData;
+    } catch (error) {
+        console.error('Erreur lors du chargement des services:', error);
+        return {
+            services: [{
+                title: "Service par défaut",
+                icon: "fa-solid fa-cog",
+                items: ["Service non disponible"]
+            }]
+        };
+    }
+}
 
-// Fonction pour générer les cartes de services
-function generateServicesCards() {
+async function generateServicesCards() {
     const servicesGrid = document.querySelector('.services-grid');
     
-    // Première ligne (3 cartes)
+    const servicesData = await loadServicesData();
+    
     const firstRow = document.createElement('div');
     firstRow.className = 'services-row';
     
-    // Deuxième ligne (2 cartes centrées)
     const secondRow = document.createElement('div');
     secondRow.className = 'services-row centered';
     
-    // Ajouter les cartes aux lignes appropriées
     servicesData.services.forEach((service, index) => {
         const serviceCard = document.createElement('div');
         serviceCard.className = 'service-card';
             
-    serviceCard.innerHTML = `
-        <h3><i class="${service.icon}" style="margin-right: 10px;"></i>${service.title}</h3>
-        <ul class="service-list">
-            ${service.items.map(item => `<li>${item}</li>`).join('')}
-        </ul>
-    `;
+        serviceCard.innerHTML = `
+            <h3><i class="${service.icon}" style="margin-right: 10px;"></i>${service.title}</h3>
+            <ul class="service-list">
+                ${service.items.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+        `;
             
         if (index < 3) {
             firstRow.appendChild(serviceCard);
@@ -690,15 +587,13 @@ function generateServicesCards() {
         }
     });
     
-    // Vider le contenu existant et ajouter les nouvelles lignes
     servicesGrid.innerHTML = '';
     servicesGrid.appendChild(firstRow);
     servicesGrid.appendChild(secondRow);
 }
 
-// Exécuter la génération des services quand le DOM est chargé
-document.addEventListener('DOMContentLoaded', generateServicesCards);
 
+document.addEventListener('DOMContentLoaded', generateServicesCards);
 
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".navbar");
@@ -708,14 +603,13 @@ hamburger.addEventListener("click", () => {
     navMenu.classList.toggle("active");
 });
 
-// Fermer menu quand on clique sur un lien
 document.querySelectorAll(".nav-menu a").forEach(link => {
     link.addEventListener("click", () => {
         hamburger.classList.remove("active");
         navMenu.classList.remove("active");
     });
 });
-// Fermer le menu déroulant en cliquant ailleurs
+
 document.addEventListener('click', function(event) {
     const dropdowns = document.getElementsByClassName('dropdown-content');
     for (let i = 0; i < dropdowns.length; i++) {
@@ -726,32 +620,24 @@ document.addEventListener('click', function(event) {
     }
 });
 
-
-// Animation de navigation fluide
 document.addEventListener('DOMContentLoaded', function() {
-    // Sélectionner tous les liens de navigation
     const navLinks = document.querySelectorAll('nav a[href^="#"]');
     
-    // Ajouter un écouteur d'événement à chaque lien
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Obtenir l'ID de la cible à partir de l'attribut href
             const targetId = this.getAttribute('href').substring(1);
             const targetSection = document.getElementById(targetId);
             
             if (targetSection) {
-                // Calculer la position de la section cible
-                const targetPosition = targetSection.offsetTop - 80; // Ajuster pour le header
+                const targetPosition = targetSection.offsetTop - 80;
                 
-                // Animation fluide vers la section
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
                 
-                // Fermer le menu hamburger si ouvert (optionnel)
                 const hamburger = document.querySelector('.hamburger');
                 const nav = document.querySelector('.nav');
                 if (hamburger.classList.contains('active')) {
@@ -762,7 +648,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Gestion du menu hamburger (si vous voulez le garder)
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('.nav');
     
@@ -774,8 +659,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-
-// Animation d'apparition des sections au scroll
 function checkScroll() {
     const sections = document.querySelectorAll('section');
     const windowHeight = window.innerHeight;
@@ -789,11 +672,9 @@ function checkScroll() {
     });
 }
 
-// Vérifier la position au chargement et au défilement
 window.addEventListener('load', checkScroll);
 window.addEventListener('scroll', checkScroll);
 
-// faire apparaître la section Skills au scroll
 const skillsSection = document.querySelector('.skills-section');
 window.addEventListener('scroll', () => {
     const sectionPos = skillsSection.getBoundingClientRect().top;
@@ -807,17 +688,12 @@ window.addEventListener('scroll', () => {
     }
 });
 
-
-
-        // Script pour les animations de navigation
         document.addEventListener('DOMContentLoaded', function() {
-            // Ajouter la classe de transition à toutes les sections
             const sections = document.querySelectorAll('section, main');
             sections.forEach(section => {
                 section.classList.add('section-transition');
             });
             
-            // Observer pour l'animation des sections
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
@@ -829,7 +705,6 @@ window.addEventListener('scroll', () => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('section-visible');
                         
-                        // Animation spécifique pour les cartes de projet
                         if (entry.target.id === 'projets') {
                             const projectCards = document.querySelectorAll('.project-card');
                             projectCards.forEach(card => {
@@ -840,12 +715,10 @@ window.addEventListener('scroll', () => {
                 });
             }, observerOptions);
             
-            // Observer chaque section
             sections.forEach(section => {
                 observer.observe(section);
             });
             
-            // Gestion du scroll pour le header et la navigation active
             window.addEventListener('scroll', function() {
                 const header = document.querySelector('.header');
                 if (window.scrollY > 50) {
@@ -854,7 +727,6 @@ window.addEventListener('scroll', () => {
                     header.classList.remove('scrolled');
                 }
                 
-                // Mise à jour des liens actifs
                 const scrollPosition = window.scrollY + 100;
                 
                 document.querySelectorAll('section').forEach(section => {
@@ -873,7 +745,6 @@ window.addEventListener('scroll', () => {
                 });
             });
             
-            // Navigation fluide
             document.querySelectorAll('.nav a').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -890,7 +761,6 @@ window.addEventListener('scroll', () => {
                 });
             });
             
-            // Animation pour le menu hamburger (si vous l'utilisez)
             const hamburger = document.querySelector('.hamburger');
             if (hamburger) {
                 hamburger.addEventListener('click', function() {
@@ -899,7 +769,7 @@ window.addEventListener('scroll', () => {
                 });
             }
         });
-// script.js
+
 const backToTop = document.getElementById('backToTop');
 
 window.addEventListener('scroll', () => {
@@ -910,8 +780,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-
-// Sélectionner toutes les sections
 const sections = document.querySelectorAll('.section');
 
 const observer = new IntersectionObserver((entries) => {
@@ -921,10 +789,585 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, {
-    threshold: 0.2 // 20% de la section visible pour déclencher
+    threshold: 0.2
 });
 
-// Observer chaque section
 sections.forEach(section => observer.observe(section));
 
 
+async function loadSkillsData() {
+    try {
+        const response = await fetch('data/competences.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const skillsData = await response.json();
+        return skillsData;
+    } catch (error) {
+        console.error('Erreur lors du chargement des compétences:', error);
+        return null;
+    }
+}
+
+function createSkillItem(skill) {
+    const skillItem = document.createElement('div');
+    skillItem.className = 'skill-item';
+    
+    const skillLogo = document.createElement('div');
+    skillLogo.className = 'skill-logo';
+    
+    if (skill.isEmoji) {
+        skillLogo.textContent = skill.icon;
+    } else {
+        const img = document.createElement('img');
+        img.src = skill.icon;
+        img.alt = skill.name;
+        skillLogo.appendChild(img);
+    }
+    
+    const skillName = document.createElement('span');
+    skillName.className = 'skill-name';
+    skillName.textContent = skill.name;
+    
+    skillItem.appendChild(skillLogo);
+    skillItem.appendChild(skillName);
+    
+    return skillItem;
+}
+
+function createSkillCategory(categoryData, categoryKey) {
+    const skillCategory = document.createElement('div');
+    skillCategory.className = 'skill-category';
+    
+    const categoryHeader = document.createElement('div');
+    categoryHeader.className = 'category-header';
+    
+    const categoryTitle = document.createElement('h3');
+    categoryTitle.className = 'category-title';
+    categoryTitle.textContent = categoryData.title;
+    
+    categoryHeader.appendChild(categoryTitle);
+    
+    const skillsScroll = document.createElement('div');
+    skillsScroll.className = 'skills-scroll';
+    
+    const scrollContent = document.createElement('div');
+    scrollContent.className = 'scroll-content';
+    
+    categoryData.skills.forEach(skill => {
+        const skillItem = createSkillItem(skill);
+        scrollContent.appendChild(skillItem);
+    });
+    
+    skillsScroll.appendChild(scrollContent);
+    skillCategory.appendChild(categoryHeader);
+    skillCategory.appendChild(skillsScroll);
+    
+    return skillCategory;
+}
+
+async function generateSkillsSection() {
+    const skillsData = await loadSkillsData();
+    
+    if (!skillsData) {
+        console.error('Impossible de charger les données des compétences');
+        return;
+    }
+    
+    const skillsContainer = document.querySelector('.skills-container');
+    
+    if (!skillsContainer) {
+        console.error('Container des compétences non trouvé');
+        return;
+    }
+    
+    skillsContainer.innerHTML = '';
+    
+    skillsData.skillsLayout.forEach(rowConfig => {
+        const skillsRow = document.createElement('div');
+        skillsRow.className = rowConfig.centerRow ? 'skills-row center-row' : 'skills-row';
+        
+        rowConfig.categories.forEach(categoryKey => {
+            const categoryData = skillsData.technicalSkills[categoryKey];
+            if (categoryData) {
+                const categoryElement = createSkillCategory(categoryData, categoryKey);
+                skillsRow.appendChild(categoryElement);
+            }
+        });
+        
+        skillsContainer.appendChild(skillsRow);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    generateServicesCards();
+    
+    generateSkillsSection();
+    
+});
+async function loadExperiencesData() {
+    try {
+        const response = await fetch('data/experiences.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const experiencesData = await response.json();
+        return experiencesData;
+    } catch (error) {
+        console.error('Erreur lors du chargement des expériences:', error);
+        return null;
+    }
+}
+
+function createExperienceItem(experience) {
+    const timelineItem = document.createElement('div');
+    timelineItem.className = 'timeline-item';
+    
+    let descriptionHTML;
+    if (experience.type === 'list') {
+        descriptionHTML = `
+            <ul>
+                ${experience.description.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+        `;
+    } else {
+        descriptionHTML = experience.description;
+    }
+    
+    timelineItem.innerHTML = `
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+            <div class="experience-header">
+                <div>
+                    <div class="experience-title">${experience.title}</div>
+                    <div class="experience-company">${experience.company}</div>
+                </div>
+                <div class="experience-period">${experience.period}</div>
+            </div>
+            <div class="experience-description">
+                ${descriptionHTML}
+            </div>
+        </div>
+    `;
+    
+    return timelineItem;
+}
+
+async function generateExperiencesSection() {
+    const experiencesData = await loadExperiencesData();
+    
+    if (!experiencesData) {
+        console.error('Impossible de charger les données des expériences');
+        return;
+    }
+    
+    const timeline = document.querySelector('.timeline');
+    
+    if (!timeline) {
+        console.error('Timeline container non trouvé');
+        return;
+    }
+    
+    timeline.innerHTML = '';
+    
+    experiencesData.experiences.forEach(experience => {
+        const experienceElement = createExperienceItem(experience);
+        timeline.appendChild(experienceElement);
+    });
+}
+
+async function loadFormationsData() {
+    try {
+        const response = await fetch('data/formations.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const formationsData = await response.json();
+        return formationsData;
+    } catch (error) {
+        console.error('Erreur lors du chargement des formations:', error);
+        return null;
+    }
+}
+
+function createFormationCard(formation) {
+    const formationCard = document.createElement('div');
+    formationCard.className = 'formation-card';
+    
+    const statusHTML = formation.status ? 
+        `<div class="formation-status">${formation.status}</div>` : '';
+    
+    formationCard.innerHTML = `
+        <div class="formation-header">
+            <div class="formation-info">
+                <div class="formation-title">${formation.title}</div>
+                <div class="formation-school">${formation.school}</div>
+            </div>
+            <div class="formation-period">${formation.period}</div>
+        </div>
+        <div class="formation-description">
+            ${formation.description}
+        </div>
+        <div class="formation-footer">
+            <div class="formation-level">${formation.level}</div>
+            ${statusHTML}
+        </div>
+    `;
+    
+    return formationCard;
+}
+
+async function generateFormationsSection() {
+    const formationsData = await loadFormationsData();
+    
+    if (!formationsData) {
+        console.error('Impossible de charger les données des formations');
+        return;
+    }
+    
+    const formationsContainer = document.querySelector('.formations-container');
+    
+    if (!formationsContainer) {
+        console.error('Formations container non trouvé');
+        return;
+    }
+    
+    formationsContainer.innerHTML = '';
+    
+    formationsData.formations.forEach(formation => {
+        const formationElement = createFormationCard(formation);
+        formationsContainer.appendChild(formationElement);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    generateServicesCards();
+    generateSkillsSection();
+    generateExperiencesSection(); 
+    generateFormationsSection();  
+    
+});
+async function loadCompetencesData() {
+    try {
+        const response = await fetch('data/competences.json');
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        return await response.json();
+    } catch (error) {
+        console.error('Erreur lors du chargement des compétences:', error);
+        return null;
+    }
+}
+
+async function generatePersonalSkills() {
+    const competencesData = await loadCompetencesData();
+    if (!competencesData || !competencesData.personalSkills) return;
+
+    const skillsGrid = document.querySelector('.soft-skills-grid');
+    skillsGrid.innerHTML = '';
+
+    competencesData.personalSkills.skills.forEach(skill => {
+        const skillCard = document.createElement('div');
+        skillCard.className = 'soft-skill-card';
+        skillCard.textContent = skill;
+        skillsGrid.appendChild(skillCard);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', generatePersonalSkills);
+async function loadLanguagesData() {
+    try {
+        const response = await fetch('data/langues.json');
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        return await response.json();
+    } catch (error) {
+        console.error('Erreur lors du chargement des langues:', error);
+        return { languages: [] };
+    }
+}
+
+async function generateLanguagesSection() {
+    const data = await loadLanguagesData();
+    const languageList = document.querySelector('.language-list');
+    languageList.innerHTML = '';
+
+    data.languages.forEach(lang => {
+        const languageItem = document.createElement('div');
+        languageItem.className = 'language-item';
+
+        languageItem.innerHTML = `
+            <div class="language-name">
+                <span>${lang.name}</span>
+            </div>
+            <div class="language-bar">
+                <div class="language-fill" data-width="${lang.level}" style="width: 0;"></div>
+            </div>
+        `;
+
+        languageList.appendChild(languageItem);
+    });
+
+    const languagesSection = document.getElementById('languages');
+    if (languagesSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.language-fill');
+                    fills.forEach(bar => {
+                        setTimeout(() => {
+                            bar.style.width = bar.dataset.width;
+                        }, 100);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(languagesSection);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', generateLanguagesSection);
+
+  const cursor = document.querySelector(".cursor");
+  const follower = document.querySelector(".cursor-follower");
+
+  let mouseX = 0, mouseY = 0;
+  let posX = 0, posY = 0;
+
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursor.style.top = `${mouseY}px`;
+    cursor.style.left = `${mouseX}px`;
+  });
+
+  function animateFollower() {
+    posX += (mouseX - posX) * 0.15; 
+    posY += (mouseY - posY) * 0.15;
+    follower.style.top = `${posY}px`;
+    follower.style.left = `${posX}px`;
+    requestAnimationFrame(animateFollower);
+  }
+
+  animateFollower();
+
+
+// Fermer le menu quand on clique sur un lien
+document.querySelectorAll('.nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('.hamburger').classList.remove('active');
+    document.querySelector('.nav').classList.remove('active');
+  });
+});
+
+// Gestion des sous-menus en version mobile
+document.querySelectorAll('.dropdown > a').forEach(dropdownLink => {
+  dropdownLink.addEventListener('click', function(e) {
+    if (window.innerWidth <= 968) {
+      e.preventDefault();
+      this.parentElement.classList.toggle('active');
+    }
+  });
+});
+
+// Gestion du défilement tactile pour les compétences
+function initSkillsTouchScroll() {
+  const skillsScrolls = document.querySelectorAll('.skills-scroll');
+  
+  skillsScrolls.forEach(scroll => {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    
+    scroll.addEventListener('mousedown', (e) => {
+      if (window.innerWidth < 969) {
+        isDown = true;
+        startX = e.pageX - scroll.offsetLeft;
+        scrollLeft = scroll.scrollLeft;
+      }
+    });
+    
+    scroll.addEventListener('mouseleave', () => {
+      isDown = false;
+    });
+    
+    scroll.addEventListener('mouseup', () => {
+      isDown = false;
+    });
+    
+    scroll.addEventListener('mousemove', (e) => {
+      if (!isDown || window.innerWidth >= 969) return;
+      e.preventDefault();
+      const x = e.pageX - scroll.offsetLeft;
+      const walk = (x - startX) * 2;
+      scroll.scrollLeft = scrollLeft - walk;
+    });
+    
+    // Gestion du tactile pour mobile
+    scroll.addEventListener('touchstart', (e) => {
+      if (window.innerWidth < 969) {
+        startX = e.touches[0].pageX - scroll.offsetLeft;
+        scrollLeft = scroll.scrollLeft;
+      }
+    }, { passive: true });
+    
+    scroll.addEventListener('touchmove', (e) => {
+      if (window.innerWidth >= 969) return;
+      const x = e.touches[0].pageX - scroll.offsetLeft;
+      const walk = (x - startX) * 2;
+      scroll.scrollLeft = scrollLeft - walk;
+    }, { passive: true });
+  });
+}
+
+// Appeler cette fonction après avoir généré les compétences
+document.addEventListener('DOMContentLoaded', function() {
+  // ... votre code existant ...
+  
+  // Initialiser le défilement tactile après le chargement des compétences
+  setTimeout(initSkillsTouchScroll, 1000);
+});
+
+// Modal pour ArtSpace
+const artspaceModal = document.getElementById('artspace-modal');
+const closeArtspaceModal = document.getElementById('artspace-modal-close');
+const artspaceButton = document.getElementById('artspace-btn');
+const artspaceModalSecondaryBtn = artspaceModal.querySelector('.modal-btn-secondary');
+
+if (artspaceButton) {
+    artspaceButton.addEventListener('click', function() {
+        artspaceModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        setTimeout(() => {
+            artspaceModal.querySelector('.modal-content').classList.add('animated');
+        }, 100);
+    });
+}
+
+function closeArtspaceModalFunction() {
+    artspaceModal.querySelector('.modal-content').classList.remove('animated');
+    artspaceModal.querySelector('.modal-container').classList.add('closing');
+    
+    setTimeout(() => {
+        artspaceModal.classList.remove('active');
+        artspaceModal.querySelector('.modal-container').classList.remove('closing');
+        document.body.style.overflow = '';
+    }, 400);
+}
+
+if (closeArtspaceModal) {
+    closeArtspaceModal.addEventListener('click', closeArtspaceModalFunction);
+}
+
+if (artspaceModalSecondaryBtn) {
+    artspaceModalSecondaryBtn.addEventListener('click', closeArtspaceModalFunction);
+}
+
+artspaceModal.addEventListener('click', function(e) {
+    if (e.target === artspaceModal) {
+        closeArtspaceModalFunction();
+    }
+});
+
+// Modal pour Projet d'intégration Voyage
+const voyageModal = document.getElementById('voyage-modal');
+const closeVoyageModal = document.getElementById('voyage-modal-close');
+const voyageButton = document.getElementById('voyage-btn');
+const voyageModalSecondaryBtn = voyageModal.querySelector('.modal-btn-secondary');
+
+if (voyageButton) {
+    voyageButton.addEventListener('click', function() {
+        voyageModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        setTimeout(() => {
+            voyageModal.querySelector('.modal-content').classList.add('animated');
+        }, 100);
+    });
+}
+
+function closeVoyageModalFunction() {
+    voyageModal.querySelector('.modal-content').classList.remove('animated');
+    voyageModal.querySelector('.modal-container').classList.add('closing');
+    
+    setTimeout(() => {
+        voyageModal.classList.remove('active');
+        voyageModal.querySelector('.modal-container').classList.remove('closing');
+        document.body.style.overflow = '';
+    }, 400);
+}
+
+if (closeVoyageModal) {
+    closeVoyageModal.addEventListener('click', closeVoyageModalFunction);
+}
+
+if (voyageModalSecondaryBtn) {
+    voyageModalSecondaryBtn.addEventListener('click', closeVoyageModalFunction);
+}
+
+voyageModal.addEventListener('click', function(e) {
+    if (e.target === voyageModal) {
+        closeVoyageModalFunction();
+    }
+});
+
+// Gestion de la touche Escape pour les nouveaux modals
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        if (artspaceModal.classList.contains('active')) {
+            closeArtspaceModalFunction();
+        }
+        if (voyageModal.classList.contains('active')) {
+            closeVoyageModalFunction();
+        }
+    }
+});
+// Gestion du menu hamburger
+const nav = document.querySelector('.nav');
+const navLinks = document.querySelectorAll('.nav a');
+const dropdowns = document.querySelectorAll('.dropdown');
+
+// Toggle du menu
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    nav.classList.toggle('active');
+    document.body.classList.toggle('nav-open');
+});
+
+// Fermeture en cliquant sur un lien
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (!link.parentElement.classList.contains('dropdown')) {
+            hamburger.classList.remove('active');
+            nav.classList.remove('active');
+            document.body.classList.remove('nav-open');
+        }
+    });
+});
+
+// Gestion des dropdowns
+dropdowns.forEach(dropdown => {
+    dropdown.addEventListener('click', (e) => {
+        e.preventDefault();
+        dropdown.classList.toggle('active');
+    });
+});
+document.querySelectorAll('.nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+
+        if (targetSection) {
+            const headerOffset = 80; // hauteur du header
+            const elementPosition = targetSection.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
